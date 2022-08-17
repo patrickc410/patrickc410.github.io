@@ -1,10 +1,12 @@
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
     emits: ['content-height'],
     mounted() {
-        this.$emit('content-height', document.getElementById('educationView').clientHeight)
+        this.$emit('content-height', document.getElementById('educationView')?.clientHeight)
     }
-}
+});
 </script>
 
 

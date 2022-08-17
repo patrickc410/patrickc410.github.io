@@ -1,7 +1,8 @@
 <script lang="ts">
 import ExperienceCard from '@/components/experience/ExperienceCard.vue';
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     components: {
         ExperienceCard
     },
@@ -48,9 +49,9 @@ export default {
         }
     },
     mounted() {
-        this.$emit('content-height', document.getElementById('experienceView').clientHeight)
+        this.$emit('content-height', document.getElementById('experienceView')?.clientHeight)
     }
-}
+});
 </script>
 
 <template>

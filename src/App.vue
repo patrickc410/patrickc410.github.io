@@ -1,31 +1,26 @@
 <script lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { defineComponent } from 'vue'
 
-// const handleContentHeight = (height) => {
-//   console.log(height);
-//   this.height = height;
-// }
-
-export default {
+export default defineComponent({
   data() {
     return {
-      height: null
+      height: 0
     }
   },
   computed: {
-    backgroundHeightStyling() {
+    backgroundHeightStyling(): any {
       return {
         height: this.height
       };
     }
   },
   methods: {
-    handleContentHeight(height) {
-      console.log(height);
+    handleContentHeight(height: number) {
       this.height = height;
     }
   }
-}
+});
 
 
 </script>
@@ -61,7 +56,7 @@ export default {
     </div>
 
     <div class="background-container">
-      <img src="src/assets/stacked-waves-haikei (1).svg" class="background-svg" :style="backgroundHeightStyling" />
+      <img src="/src/assets/stacked-waves-haikei.svg" class="background-svg" v-bind:style="backgroundHeightStyling" />
     </div>
   </div>
 

@@ -1,7 +1,8 @@
 <script lang="ts">
 import ProjectCard from '@/components/project/ProjectCard.vue';
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
     components: {
         ProjectCard
     },
@@ -37,9 +38,9 @@ export default {
         }
     },
     mounted() {
-        this.$emit('content-height', document.getElementById('projectsView').clientHeight)
+        this.$emit('content-height', document.getElementById('projectsView')?.clientHeight)
     }
-}
+});
 </script>
 
 <template>
