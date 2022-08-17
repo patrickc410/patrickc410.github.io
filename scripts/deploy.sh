@@ -6,6 +6,8 @@ npm run build
 
 cd dist 
 
+rm -rf .git
+
 git init
 git add -A
 git commit -m "New Deployment"

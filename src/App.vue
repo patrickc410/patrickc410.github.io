@@ -1,86 +1,126 @@
-<script setup lang="ts">
+<script lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
+
+// const handleContentHeight = (height) => {
+//   console.log(height);
+//   this.height = height;
+// }
+
+export default {
+  data() {
+    return {
+      height: null
+    }
+  },
+  computed: {
+    backgroundHeightStyling() {
+      return {
+        height: this.height
+      };
+    }
+  },
+  methods: {
+    handleContentHeight(height) {
+      console.log(height);
+      this.height = height;
+    }
+  }
+}
+
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="page-container">
+    <header class="page-header">
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <b-navbar>
+        <b-navbar-brand to="/">
+          Patrick Crawford
+        </b-navbar-brand>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/resume">Resume</RouterLink>
-      </nav>
+        <b-navbar-nav pills>
+          <b-nav-item class="my-nav-item" to="/">Experience</b-nav-item>
+          <b-nav-item to="/projects">Projects</b-nav-item>
+          <b-nav-item to="/education">Education</b-nav-item>
+          <b-nav-item href="/resumes/Patrick_resume_2022-07-19.pdf">Resume</b-nav-item>
+        </b-navbar-nav>
+
+        <!-- <b-nav>
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/resume">Resume</RouterLink>
+        </b-nav> -->
+      </b-navbar>
+    </header>
+
+    <div class="page-body-container" id="page-body-container">
+      <div class="page-body-wrapper">
+        <RouterView @content-height="handleContentHeight" />
+      </div>
     </div>
-  </header>
 
-  <RouterView />
+    <div class="background-container">
+      <img src="src/assets/stacked-waves-haikei (1).svg" class="background-svg" :style="backgroundHeightStyling" />
+    </div>
+  </div>
+
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+/* .page-container {
+  margin: 1.5rem;
+} */
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+.page-header {
+  position: fixed;
+  top: 0;
+  background-color: aquamarine;
+  padding: 1.5rem;
+  max-width: 100%;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  z-index: 2;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.page-body-container {
+  top: 7.5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+  z-index: 1;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.header-brand {
+  justify-self: center;
+  align-self: center;
+  margin: 0;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.my-nav-item {
+  justify-self: center;
+  align-self: center;
 }
 
-nav a:first-of-type {
-  border: 0;
+.page-body-wrapper {
+  margin-bottom: 3rem;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.background-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.background-svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  /* width: 100%; */
+  /* height: 100%; */
 }
 </style>

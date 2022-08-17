@@ -11,7 +11,12 @@
     "deploy": "sh scripts/deploy.sh"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.0",
+    "bootstrap-vue": "^2.22.0",
+    "bootstrap-vue-3": "^0.2.8",
     "vue": "^3.2.37",
+    "vue-rellax": "^0.2.0",
     "vue-router": "^4.1.2"
   },
   "devDependencies": {
